@@ -186,3 +186,50 @@ mutation {
 }
 ```
 > **Note**: The mutation data will only persist while the server is running. Once the server is stopped, all created data will be lost since we're using an in-memory list instead of a persistent database.
+
+---
+
+### Database Setup and Environment Variables
+
+#### Setting Up the Database URL
+Add your database URL to a `.env` file in your project folder:
+```env
+DATABASE_URL=`database url`
+```
+
+---
+
+#### Installing Necessary Packages
+Install `SQLAlchemy`, `psycopg2-binary`, and `python-dotenv` for database integration:
+```bash
+pip install sqlalchemy psycopg2-binary python-dotenv
+```
+
+---
+
+#### Package Descriptions
+- **SQLAlchemy**: An ORM (Object-Relational Mapper) for interacting with the database using Python objects.
+- **psycopg2-binary**: A PostgreSQL database adapter for Python.
+- **python-dotenv**: A library to load environment variables from a `.env` file.
+
+---
+
+### Notes on Running FastAPI with `uvicorn`
+
+- The line:
+  ```python
+  if __name__ == "__main__":
+      import uvicorn
+      uvicorn.run(app, host="0.0.0.0", port=8000)
+  ```
+  is used to run your FastAPI app directly with `uvicorn` when you execute `main.py` as a script.
+
+- **Why It Works Without This Line**: You can still run your FastAPI app using:
+  ```bash
+  uvicorn app.main:app --reload
+  ```
+  Here, `uvicorn` starts the server for you, so you don’t need the `uvicorn.run()` line in your code.
+
+- **When to Use It**: Use `uvicorn.run()` if you want to be able to run your app by simply executing `python app/main.py`. Otherwise, it’s optional, especially if you run your app using the `uvicorn` command from the terminal.
+
+--- 

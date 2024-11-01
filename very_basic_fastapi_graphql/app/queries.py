@@ -1,32 +1,32 @@
+# app/queries.py
 import strawberry
-from .types import User  # Import the custom User type
-from .data import user_data  # Import the simulated data
+from typing import List
+from .types import User
+from .database import SessionLocal
+from .types import UserModel
 
 @strawberry.type
 class Query:
-    # Define a field named `hello` that returns a string message
     @strawberry.field
     def hello(self) -> str:
         return "Hello, GraphQL with FastAPI!"
 
-    # Define a query to return a hardcoded user
-    @strawberry.field
-    def get_user(self) -> User:
-        return User(id=1, name="Alice", email="alice@example.com")
-
-    # Add new get_user_by_id field
     @strawberry.field
     def get_user_by_id(self, id: int) -> User:
-        # The next() function takes this generator expression as an argument.
-        return next((user for user in user_data if user.id == id), None)
-
-        # You can rewrite this using a traditional loop:
-        # for user in user_data:
-        #     if user.id == id:
-        #         return user
-        # return None
+        db = SessionLocal()
+        try:
+            db_user = db.query(UserModel).filter(UserModel.id == id).first()
+            if db_user:
+                return User(id=db_user.id, name=db_user.name, email=db_user.email)
+            return None
+        finally:
+            db.close()
     
-    # Add new all_users field
     @strawberry.field
-    def all_users(self) -> list[User]:
-        return user_data
+    def all_users(self) -> List[User]:
+        db = SessionLocal()
+        try:
+            users = db.query(UserModel).all()
+            return [User(id=u.id, name=u.name, email=u.email) for u in users]
+        finally:
+            db.close()
