@@ -212,6 +212,8 @@ pip install sqlalchemy psycopg2-binary python-dotenv
 - **psycopg2-binary**: A PostgreSQL database adapter for Python.
 - **python-dotenv**: A library to load environment variables from a `.env` file.
 
+![image](https://github.com/user-attachments/assets/f107b46e-154f-41b8-a455-79fc387d613f)
+
 ---
 
 ### Notes on Running FastAPI with `uvicorn`
