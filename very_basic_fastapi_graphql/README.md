@@ -171,6 +171,8 @@ You can extend your GraphQL API by adding custom types for more structured and m
 
 ![image](https://github.com/user-attachments/assets/b3846179-5836-4e99-82cc-2bbde717b69b)
 
+---
+
 ### **Create a New User Mutation**
 
 To create a new user, use the following mutation:
