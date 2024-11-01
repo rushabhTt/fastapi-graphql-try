@@ -103,4 +103,4 @@ This will install all the packages listed in `requirements.txt`.
    - GraphQLRouter manages routing
    - All requests go through `/graphql` endpoint
 
-![flow of graphql](image.png)
+![Screenshot (869)](https://github.com/user-attachments/assets/922b4eb9-7f50-433a-bf59-4b2c6172a8f6)
