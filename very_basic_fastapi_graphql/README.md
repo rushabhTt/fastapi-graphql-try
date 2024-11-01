@@ -168,3 +168,5 @@ You can extend your GraphQL API by adding custom types for more structured and m
    ```
    - `getUserById`: Fetches details for a specific user by `id`.
    - `allUsers`: Retrieves a list of all users with their details.
+
+![image](https://github.com/user-attachments/assets/b3846179-5836-4e99-82cc-2bbde717b69b)
