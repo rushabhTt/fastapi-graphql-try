@@ -104,3 +104,34 @@ This will install all the packages listed in `requirements.txt`.
    - All requests go through `/graphql` endpoint
 
 ![Screenshot (869)](https://github.com/user-attachments/assets/922b4eb9-7f50-433a-bf59-4b2c6172a8f6)
+
+---
+
+### **Add a Custom Type with a Simple Query**
+
+You can extend your GraphQL API by adding custom types for more structured and meaningful queries. Here’s how to use a custom type and query it:
+
+1. **Custom Query Example**  
+   Access your GraphQL Playground at [http://127.0.0.1:8000/graphql](http://127.0.0.1:8000/graphql) and run a query like this:
+   ```graphql
+   {
+     getUser {
+       id
+       name
+       email
+     }
+   }
+   ```
+   - This query fetches `id`, `name`, and `email` fields for a user.
+
+2. **Flexibility of Custom Queries**  
+   - **Select Specific Fields**: Not every query has to return all fields. You can simplify your request by excluding fields you don’t need.
+   - Example of a selective query:
+     ```graphql
+     {
+       getUser {
+         name
+       }
+     }
+     ```
+   - This one will only return the user's name.
