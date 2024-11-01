@@ -171,9 +171,10 @@ You can extend your GraphQL API by adding custom types for more structured and m
 
 ![image](https://github.com/user-attachments/assets/b3846179-5836-4e99-82cc-2bbde717b69b)
 
-Create a New User:
-graphql
-Copy code
+### **Create a New User Mutation**
+
+To create a new user, use the following mutation:
+```graphql
 mutation {
   createUser(name: "Daisy", email: "daisy@example.com") {
     id
@@ -181,5 +182,5 @@ mutation {
     email
   }
 }
-
-> Note: The mutation data will persist only while the server is running. Once the server is stopped, all created data will be lost since we're using an in-memory list instead of a persistent database.
+```
+> **Note**: The mutation data will only persist while the server is running. Once the server is stopped, all created data will be lost since we're using an in-memory list instead of a persistent database.
