@@ -2,6 +2,7 @@
 import strawberry
 from .types import User  # Import the custom User type
 from .data import user_data  # Import the simulated data
+from .mutations import Mutation  # Import mutations
 
 @strawberry.type
 class Query:
@@ -20,7 +21,7 @@ class Query:
     def get_user_by_id(self, id: int) -> User:
         # The next() function takes this generator expression as an argument.
         return next((user for user in user_data if user.id == id), None)
-        
+
         # You can rewrite this using a traditional loop:
         # for user in user_data:
         #     if user.id == id:
@@ -33,4 +34,4 @@ class Query:
         return user_data
 
 # Create a GraphQL schema with the defined Query
-schema = strawberry.Schema(query=Query)
+schema = strawberry.Schema(query=Query, mutation=Mutation)
