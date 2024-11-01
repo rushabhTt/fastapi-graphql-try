@@ -112,7 +112,7 @@ This will install all the packages listed in `requirements.txt`.
 You can extend your GraphQL API by adding custom types for more structured and meaningful queries. Here’s how to use a custom type and query it:
 
 1. **Custom Query Example**  
-   Access your GraphQL Playground at [http://127.0.0.1:8000/graphql](http://127.0.0.1:8000/graphql) and run a query like this:
+   Access your GraphQL Playground at `http://127.0.0.1:8000/graphql` and run this query:
    ```graphql
    {
      getUser {
@@ -125,7 +125,7 @@ You can extend your GraphQL API by adding custom types for more structured and m
    - This query fetches `id`, `name`, and `email` fields for a user.
 
 2. **Flexibility of Custom Queries**  
-   - **Select Specific Fields**: Not every query has to return all fields. You can simplify your request by excluding fields you don’t need.
+   - **Select Specific Fields**: You don't have to retrieve all fields. You can simplify your request by choosing only the ones you need.
    - Example of a selective query:
      ```graphql
      {
@@ -135,3 +135,36 @@ You can extend your GraphQL API by adding custom types for more structured and m
      }
      ```
    - This one will only return the user's name.
+
+3. **Combining Queries**  
+   You can run multiple queries at once. Here's an example:
+   ```graphql
+   {
+     hello
+     getUser {
+       id
+       name
+       email
+     }
+   }
+   ```
+   - This will retrieve a greeting message and the user’s details.
+
+4. **Additional Query Options**  
+   You can also use queries like those shown in the image above:
+   ```graphql
+   {
+     getUserById(id: 2) {
+       id
+       name
+       email
+     }
+     allUsers {
+       id
+       name
+       email
+     }
+   }
+   ```
+   - `getUserById`: Fetches details for a specific user by `id`.
+   - `allUsers`: Retrieves a list of all users with their details.
